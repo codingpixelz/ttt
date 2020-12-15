@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Tic-Tac-Toe</title>
+	<style type="text/css">
+		table {text-align:center; border-collapse: collapse; background-color: gold;}
+		input {color:white;}
+		td {color:blue;}
+	</style>
+	
+	<script type="text/javascript">
+  
+  var i,j,iEntry;
+
+var iTurn = 1; //Declare the first move as X =1
+
+var aArray = new Array(2); //Make global array with 3 cells
+
+for(i=0;i<=2;i++)
+{
+    aArray[i]=new Array(2); //Declare each cell in above array to be a 3 cell array
+}
+
+for(i=0;i<=2;i++)
+{
+    for (j=0;j<=2;j++) //goes across the rows;
+    {
+        aArray[i][j]=0;    //value of iEntry is placed in the ith row
+                                //and jth column of the array
+    }
+}
+
+function vLoadArray() //displays values in array cells in corresponding cells of the table
+{
+    for(i=0;i<=2;i++)
+    {
+        for(j=0;j<=2;j++)
+        {
+            strCell="img"+i+j; //make id for each cell
+            document.getElementById(strCell).value=aArray[i][j]; //put id in the i and j spot in the array
+        }
+    }
+}
+
+function vTTT(strCell)
+{
+
+    var strCell="img"+i+j;
+            
+    if (aArray[i][j]==0 && iTurn==1)
+
+        {
+            document.getElementById(strCell).src = 'X.jpg'
+            aArray[i][j] = 1;
+            iTurn=2;
+        }
+
+    if (aArray[i][j]==0 && iTurn==2)
+        
+        {
+            document.getElementById(strCell).src = 'O.jpg'
+            aArray[i][j] = 2;
+            iTurn=1;
+        }
+    vLoadArray();
+}
+
+function vReset()		
+{
+
+}
+
+function bCheckWinner(iPlayer)
+{
+
+}
+  
+  </script>
+	
+</head>
+<body>
+	<form id="frmMain" method="post">
+
+		<table align="center" border="3">
+			<tr>
+				<td colspan="3"><b>Tic-Tac-Toe!</b></td>
+			</tr>
+			<tr>
+				<td><img src="Blank.jpg" id="img00" onclick="vTTT()" /></td>
+				<td><img src="Blank.jpg" id="img01" onclick="vTTT()" /></td>
+				<td><img src="Blank.jpg" id="img02" onclick="vTTT()" /></td>
+			</tr>
+			<tr>
+				<td><img src="Blank.jpg" id="img10" onclick="vTTT()" /></td>
+				<td><img src="Blank.jpg" id="img11" onclick="vTTT()" /></td>
+				<td><img src="Blank.jpg" id="img12" onclick="vTTT()" /></td>
+			</tr>
+			<tr>
+				<td><img src="Blank.jpg" id="img20" onclick="vTTT()" /></td>
+				<td><img src="Blank.jpg" id="img21" onclick="vTTT()" /></td>
+				<td><img src="Blank.jpg" id="img22" onclick="vTTT()" /></td>
+			</tr>
+			<tr>
+				<td colspan="3"><input style="background-color: blue" type="button" value="Clear" id="btnClear" onclick="vReset()"></td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+</html>
