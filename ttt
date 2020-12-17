@@ -11,8 +11,11 @@
 	</style>
 	
 	<script type="text/javascript">
-  
   var i,j,iEntry;
+
+var iEntry = 0;
+
+var iTurn = 1; //Declare the first move as X =1
 
 var aArray = new Array(2); //Make global array with 3 cells
 
@@ -27,11 +30,14 @@ for(i=0;i<=2;i++)
     {
         aArray[i][j]=0;    //value of iEntry is placed in the ith row
                                 //and jth column of the array
+        iEntry++;
     }
 }
 
 function vLoadArray() //displays values in array cells in corresponding cells of the table
 {
+    var i, j;
+    
     for(i=0;i<=2;i++)
     {
         for(j=0;j<=2;j++)
@@ -46,41 +52,57 @@ function vTTT(row,col)
 {
 
     var strCell="img"+row+col;
-
-    var i, j;
-
-    var iTurn = 1; //Declare the first move as X =1
             
-    if (aArray[row][col]==0 && iTurn==1)
-
+    if (aArray[row][col]==0 && iTurn==1) //checks if empty and turn is "X"
         {
             document.getElementById(strCell).src = 'X.jpg'
-            aArray[row][col]==1;
-            iTurn=2;
+            aArray[row][col]=1;
+            iTurn=2; //Make it O's turn
         }
 
-    if (aArray[row][col]==0 && iTurn==2)
-        
+    else if (aArray[row][col]==0 && iTurn==2) //Checks if empty and turn is "O"
         {
             document.getElementById(strCell).src = 'O.jpg'
-            aArray[row][col]==2;
-            iTurn=1;
+            aArray[row][col]=2;
+            iTurn=1; //Make it X's turn
         }
-
     vLoadArray();
 }
 
-function vReset()		
+function vReset(row,col)		
 {
+    var i, j;
 
+    vLoadArray();
+
+    var strCell="img"+row+col;
+
+    for(i=0;i<=2;i++)
+    {
+        for (j=0;j<=2;j++) //goes across the rows;
+        {
+            aArray[i][j]=0;    //value of iEntry is placed in the ith row
+                                    //and jth column of the array
+        }
+    }
+
+    for(row=0;row<=2;row++)
+    {
+        for (col=0;col<=2;col++) //goes across the rows;
+        {
+            document.getElementById(strCell).src = 'Blank.jpg'
+        }
+    }
+
+    
 }
 
 function bCheckWinner(iPlayer)
 {
 
 }
-  
-  </script>
+
+</script>
 	
 </head>
 <body>
