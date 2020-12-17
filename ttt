@@ -14,8 +14,6 @@
   
   var i,j,iEntry;
 
-var iTurn = 1; //Declare the first move as X =1
-
 var aArray = new Array(2); //Make global array with 3 cells
 
 for(i=0;i<=2;i++)
@@ -44,26 +42,31 @@ function vLoadArray() //displays values in array cells in corresponding cells of
     }
 }
 
-function vTTT(strCell)
+function vTTT(row,col)
 {
 
-    var strCell="img"+i+j;
+    var strCell="img"+row+col;
+
+    var i, j;
+
+    var iTurn = 1; //Declare the first move as X =1
             
-    if (aArray[i][j]==0 && iTurn==1)
+    if (aArray[row][col]==0 && iTurn==1)
 
         {
             document.getElementById(strCell).src = 'X.jpg'
-            aArray[i][j] = 1;
+            aArray[row][col]==1;
             iTurn=2;
         }
 
-    if (aArray[i][j]==0 && iTurn==2)
+    if (aArray[row][col]==0 && iTurn==2)
         
         {
             document.getElementById(strCell).src = 'O.jpg'
-            aArray[i][j] = 2;
+            aArray[row][col]==2;
             iTurn=1;
         }
+
     vLoadArray();
 }
 
