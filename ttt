@@ -19,6 +19,8 @@ var iTurn = 1; //Declare the first move as X =1
 
 var aArray = new Array(2); //Make global array with 3 cells
 
+var bOver = false;
+
 for(i=0;i<=2;i++)
 {
     aArray[i]=new Array(2); //Declare each cell in above array to be a 3 cell array
@@ -52,6 +54,9 @@ function vTTT(row,col)
 {
 
     var strCell="img"+row+col;
+
+    if (!bOver)
+    {
             
     if (aArray[row][col]==0 && iTurn==1) //checks if empty and turn is "X"
         {
@@ -66,7 +71,36 @@ function vTTT(row,col)
             aArray[row][col]=2;
             iTurn=1; //Make it X's turn
         }
+    
+    /*if (aArray[row][col]==0 && iTurn==1 && bCheckwinner(iTurn) ) //checks if empty and turn is "X"
+        {
+            alert("X wins! Game over.");
+            aArray[row][col]=1;
+            bOver = true;
+
+        }
+
+    else if (aArray[row][col]==0 && iTurn==2 && bCheckWinner(iTurn) ) //Checks if empty and turn is "O"
+        {
+            alert("O wins! Game over.");
+            aArray[row][col]=2;
+            bOver = true;
+        }*/
+
+    if ( bCheckWinner(iTurn) && iTurn == 2)
+    {
+        alert("O wins! Game over.");
+        bOver = true;
+    }
+    
+    else if ( bCheckWinner(iTurn) && iTurn == 1)
+    {
+        alert("X wins! Game over.");
+        bOver = true;
+    }
+
     vLoadArray();
+    }
 }
 
 function vReset(row,col)		
@@ -90,7 +124,15 @@ function vReset(row,col)
     {
         for (col=0;col<=2;col++) //goes across the rows;
         {
-            document.getElementById(strCell).src = 'Blank.jpg'
+            document.getElementById(strCell).src = 'Blank.jpg';
+            document.getElementById('img01').src = 'Blank.jpg';
+            document.getElementById('img02').src = 'Blank.jpg';
+            document.getElementById('img10').src = 'Blank.jpg';
+            document.getElementById('img11').src = 'Blank.jpg';
+            document.getElementById('img12').src = 'Blank.jpg';
+            document.getElementById('img20').src = 'Blank.jpg';
+            document.getElementById('img21').src = 'Blank.jpg';
+            document.getElementById('img22').src = 'Blank.jpg';
         }
     }
 
@@ -100,8 +142,73 @@ function vReset(row,col)
 function bCheckWinner(iPlayer)
 {
 
+    var bWin = false;
+
+        var i;
+
+        if (!bOver)
+        {
+
+        //checks for row + column wins
+        for (i = 0; i < 3; i++)
+        {
+            if((aArray[i][0] == iPlayer && aArray[i][1] == iPlayer && aArray[i][2] == iPlayer) || 
+            (aArray[0][i] == iPlayer && aArray[1][i] == iPlayer && aArray[2][i] == iPlayer && iPlayer == 1))
+            {
+                bWin = true;
+                bOver = true;
+                iTurn = 1;
+            }
+
+            if((aArray[i][0] == iPlayer && aArray[i][1] == iPlayer && aArray[i][2] == iPlayer) || 
+            (aArray[0][i] == iPlayer && aArray[1][i] == iPlayer && aArray[2][i] == iPlayer && iPlayer == 2))
+            {
+                bWin = true;
+                bOver = true;
+                iTurn = 2;
+            }
+        }
+        //check for diagnoal wins
+            if ((aArray[0][0] == iPlayer && aArray[1][1] == iPlayer && aArray[2][2] == iPlayer) ||
+            (aArray[0][2] == iPlayer && aArray[1][1] == iPlayer && aArray[2][0] == iPlayer && iPlayer == 1))
+            {
+                bWin = true;
+                bOver = true;
+                iTurn = 1;
+            }
+
+            if ((aArray[0][0] == iPlayer && aArray[1][1] == iPlayer && aArray[2][2] == iPlayer) ||
+            (aArray[0][2] == iPlayer && aArray[1][1] == iPlayer && aArray[2][0] == iPlayer && iPlayer == 2))
+            {
+                bWin = true;
+                bOver = true;
+                iTurn = 2;
+            }
+
+            bCheckNo();
+    
+        }
+
+        return bWin;
+
 }
 
+function bCheckNo(iPlayer)
+{
+    var bWin = false;
+    var bOver = false;
+
+    var bNoOne = false;
+
+    if((aArray[0][0] != 0 && aArray[0][1] != 0 && aArray[0][2] != 0) &&
+        (aArray[1][0] != 0 && aArray[1][1] != 0 && aArray[1][2] != 0) && 
+        (aArray[2][0] != 0 && aArray[2][1] != 0 && aArray[2][2] != 0) && bWin == false)
+        {
+            bNoOne = true;
+            alert("Nobody wins. Game over.");
+        }
+
+}
 </script>
 	
 </head>
