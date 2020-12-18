@@ -220,22 +220,22 @@ function bCheckNo(iPlayer)
 				<td colspan="3"><b>Tic-Tac-Toe!</b></td>
 			</tr>
 			<tr>
-				<td><img src="Blank.jpg" id="img00" onclick="vTTT()" /></td>
-				<td><img src="Blank.jpg" id="img01" onclick="vTTT()" /></td>
-				<td><img src="Blank.jpg" id="img02" onclick="vTTT()" /></td>
+				<td><img src="Blank.jpg" id="img00" onclick="vTTT(0,0)" /></td>
+				<td><img src="Blank.jpg" id="img01" onclick="vTTT(0,1)" /></td>
+				<td><img src="Blank.jpg" id="img02" onclick="vTTT(0,2)" /></td>
 			</tr>
 			<tr>
-				<td><img src="Blank.jpg" id="img10" onclick="vTTT()" /></td>
-				<td><img src="Blank.jpg" id="img11" onclick="vTTT()" /></td>
-				<td><img src="Blank.jpg" id="img12" onclick="vTTT()" /></td>
+				<td><img src="Blank.jpg" id="img10" onclick="vTTT(1,0)" /></td>
+				<td><img src="Blank.jpg" id="img11" onclick="vTTT(1,1)" /></td>
+				<td><img src="Blank.jpg" id="img12" onclick="vTTT(1,2)" /></td>
 			</tr>
 			<tr>
-				<td><img src="Blank.jpg" id="img20" onclick="vTTT()" /></td>
-				<td><img src="Blank.jpg" id="img21" onclick="vTTT()" /></td>
-				<td><img src="Blank.jpg" id="img22" onclick="vTTT()" /></td>
+				<td><img src="Blank.jpg" id="img20" onclick="vTTT(2,0)" /></td>
+				<td><img src="Blank.jpg" id="img21" onclick="vTTT(2,1)" /></td>
+				<td><img src="Blank.jpg" id="img22" onclick="vTTT(2,2)" /></td>
 			</tr>
 			<tr>
-				<td colspan="3"><input style="background-color: blue" type="button" value="Clear" id="btnClear" onclick="vReset()"></td>
+				<td colspan="3"><input style="background-color: blue" type="button" value="Clear" id="btnClear" onclick="vReset(0,0)"></td>
 			</tr>
 		</table>
 
